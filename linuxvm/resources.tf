@@ -1,6 +1,6 @@
 variable "prefix" {
-  # default = <APM ID>
-  default = "smi262"
+  default = <APM ID>
+  # default = "smi262"
 }
 
 resource "azurerm_resource_group" "example" {
