@@ -30,19 +30,19 @@ resource "azurerm_virtual_machine" "main" {
     ProductName : "POC"
     ProductOwner : "Enterprise"
   }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt update",
-      "sudo apt install -y nginx"
-    ]
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "sudo apt update",
+  #     "sudo apt install -y nginx"
+  #   ]
 
-    connection {
-      type     = "ssh"
-      user     = "testadmin"
-      password = "Surprisu@1993"
-      host     = azurerm_public_ip.publicip.ip_address
-    }
-  }
+  #   connection {
+  #     type     = "ssh"
+  #     user     = "testadmin"
+  #     password = "Surprisu@1993"
+  #     host     = azurerm_public_ip.publicip.ip_address
+  #   }
+  # }
 
 }
 

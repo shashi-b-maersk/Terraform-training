@@ -1,12 +1,6 @@
-/*"tags": {
-                "ProductEnvironment": "Sandpit",
-                "ProductName": "POC",
-                "ProductOwner": "Enterprise"
-            }
-*/
 variable "prefix" {
-  default = <APM ID>
-  #default = smi262
+  # default = <APM ID>
+  default = "smi262"
 }
 
 resource "azurerm_resource_group" "example" {
@@ -28,12 +22,12 @@ resource "azurerm_subnet" "internal" {
   address_prefixes     = ["10.0.2.0/24"]
 }
 
-resource "azurerm_public_ip" "publicip" {
-  name                = "${var.prefix}-publicip"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  allocation_method   = "Static"
-}
+# resource "azurerm_public_ip" "publicip" {
+#   name                = "${var.prefix}-publicip"
+#   resource_group_name = azurerm_resource_group.example.name
+#   location            = azurerm_resource_group.example.location
+#   allocation_method   = "Static"
+# }
 
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
@@ -44,7 +38,7 @@ resource "azurerm_network_interface" "main" {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.publicip.id
+    # public_ip_address_id = azurerm_public_ip.publicip.id
   }
 }
 
